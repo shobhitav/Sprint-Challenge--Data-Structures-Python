@@ -136,3 +136,27 @@ class DoublyLinkedList:
             current = current.next
 
         return max_value
+
+    """Replaces the node at passed index (starting with index 0)."""
+    def replace_at(self, index, new_value):
+        i = 0
+        node = self.head
+        while(node):
+            if i==index:
+                node.value=new_value
+                break
+            i+=1
+            node=node.next
+
+    """Returns an array representation."""
+    def to_array(self):
+        arr = [None]*self.length
+        i = 0
+        node = self.head
+        while(node):
+            arr[i]=node.value
+            i+=1
+            node=node.next
+        return arr
+
+

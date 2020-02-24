@@ -19,13 +19,14 @@ class LinkedList:
   def __init__(self):
     # reference to the head of the list
     self.head = None
+    self.length = 0
 
   def add_to_head(self, value):
     node = Node(value)
     if self.head is not None:
       node.set_next(self.head)
-    
     self.head = node
+    self.length +=1
 
   def contains(self, value):
     if not self.head:
@@ -40,8 +41,24 @@ class LinkedList:
       # update our current node to the current node's next node
       current = current.get_next()
     # if we've gotten here, then the target node isn't in our list
-    return False
+    return False 
 
   def reverse_list(self):
     # TO BE COMPLETED
-    pass
+    arr = [None]*self.length
+    node = self.head
+    i = 0
+    while node and node.value:
+      arr[i]=node.value
+      i+=1
+      node=node.next_node
+
+    self.head = None
+    self.length = 0
+
+    for index in range(i, len(arr)):
+      self.add_to_head(None)
+    
+    for index in range(i):
+      self.add_to_head(arr[index])
+
