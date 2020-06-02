@@ -38,10 +38,28 @@ class LinkedList:
 
         return False
 
+
+    def get(self):
+        retArr = []
+        current = self.head
+        while current:
+            retArr.append(current.get_value())
+            current = current.get_next()
+        return retArr
+
+
     def reverse_list(self, node, prev):
-        node1 = node
-        while node and node.get_next():
-            node = node.get_next()
-            self.add_to_head(node.get_value())
-        if node1:
-            node1.set_next(prev)
+        # copy starting node to current, before we iterate over node's next link and lose reference to starting node
+        current = node
+        while current and current.get_next():
+            current = current.get_next()
+            self.add_to_head(current.get_value())
+        
+        # ignore empty lists
+        if node:
+            node.set_next(prev)
+
+        # print(self.get())
+
+
+
